@@ -1,11 +1,15 @@
 import React from "react"
-import { HeaderStyled, Title, LogoIcon } from "./header.styled"
+import { HeaderStyled, Title, LogoIcon, LinkHome } from "./header.styled"
+import Navigation from "../navigation"
 
 export default function Header(props) {
   return (
     <HeaderStyled>
-      <LogoIcon />
-      <Title>Farmer's Market</Title>
+      <LinkHome to="/">
+        <LogoIcon />
+        <Title>Farmer's Market</Title>
+      </LinkHome>
+      <Navigation />
     </HeaderStyled>
   )
 }

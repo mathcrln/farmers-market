@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Home, Search, ShoppingBasket, User } from "@styled-icons/fa-solid"
 import React from "react"
 import { Link } from "gatsby"
+import { DEVICES } from "../../../assets/constants/DEVICES"
 
 const NavigationStyled = styled.nav`
   background: ${({ theme }) => theme.primaryColor};
@@ -12,56 +13,30 @@ const NavigationStyled = styled.nav`
   right: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
   svg {
     color: white;
     width: 1.5rem;
     height: 1.5rem;
   }
+  @media ${DEVICES.tablet} {
+    position: static;
+  } ;
 `
 
 const HomeIcon = styled(Home)``
-const SearchIcon = styled(Search)`
-  &:after {
-    content: "Home";
-    color: white;
-    width: 5rem;
-  }
-`
-const ShoppingBasketIcon = styled(ShoppingBasket)`
-  &:after {
-    content: "Home";
-    color: white;
-    width: 5rem;
-  }
-`
-const UserIcon = styled(User)`
-  &:after {
-    content: "Home";
-    color: white;
-    width: 5rem;
-  }
-`
-const MenuItem = styled.div`
-  display: flex;
-  align-items: center;
-  background: #ff9900;
-  border-radius: 0px 20px 20px 0px;
-  padding: 1.5rem 0.8rem;
-
-  &:after {
-    content: ${props => `${props.name}`};
-    color: white;
-    font-size: 1.2rem;
-    margin-left: 0.7rem;
-  }
-  margin-right: 0.5rem;
-`
+const SearchIcon = styled(Search)``
+const ShoppingBasketIcon = styled(ShoppingBasket)``
+const UserIcon = styled(User)``
 
 const StyledLink = styled(linkProps => <Link {...linkProps} />)`
   padding: 1.5rem 0.8rem;
   text-decoration: none;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+
   &.active {
     display: flex;
     align-items: center;
@@ -83,6 +58,22 @@ const StyledLink = styled(linkProps => <Link {...linkProps} />)`
   &:first-of-type {
     border-radius: 0 20px 20px 0;
   }
+
+  @media ${DEVICES.tablet} {
+    &.active {
+      background: none;
+      svg {
+        color: ${({ theme }) => theme.secondaryColor};
+      }
+      margin-right: 0;
+    }
+    &:after {
+      content: ${props => `${props.name}`};
+      color: white;
+      font-size: 1.2rem;
+      margin-left: 0.7rem;
+    }
+  } ;
 `
 
 export {
@@ -91,6 +82,5 @@ export {
   SearchIcon,
   ShoppingBasketIcon,
   UserIcon,
-  MenuItem,
   StyledLink,
 }
